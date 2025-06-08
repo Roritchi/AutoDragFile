@@ -12,13 +12,13 @@ class AutoDragFile(Gtk.Window):
         self.set_decorated(False)
         self.set_keep_above(True)
         self.set_resizable(False)
-        self.set_app_paintable(True) 
-        self.set_opacity(0.5) 
+        self.set_app_paintable(True)
         self.set_default_size(100, 40)
         self.set_border_width(8)
 
         self.filepath = filepath
-        self.label = Gtk.Label(label="📎 Datei ziehen")
+        self.label = Gtk.Label()
+        self.label.set_markup('<span foreground="white" font_weight="bold">📎 Datei ziehen</span>')
         self.add(self.label)
 
         # Targets für Datei (URI)
@@ -53,7 +53,7 @@ class AutoDragFile(Gtk.Window):
     def on_drag_begin(self, widget, context):
         self.drag_started = True
         # Rückmeldung zeigen und dann Fenster verstecken
-        self.label.set_text("✅ Datei bereit")
+        self.label.set_markup('<span foreground="white" font_weight="bold">✅ Datei bereit</span>')
         self.override_background_color(Gtk.StateFlags.NORMAL, Gdk.RGBA(0.2, 1.0, 0.2, 0.6))  # grünlicher Hintergrund
         GLib.timeout_add(500, self.hide_window)
 
@@ -87,4 +87,3 @@ if __name__ == "__main__":
     win.connect("destroy", Gtk.main_quit)
     win.show_all()
     Gtk.main()
-
