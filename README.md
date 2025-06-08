@@ -10,7 +10,8 @@ After starting the drag process, the program exits after 10 seconds,
 you need to have finished the drag process until then, because the drag process will cancel
 once the process is stopped.
 
-UI Text is in German, but its just 2 Words.
+UI text is in german, but its just 2 words.
+You can change the text and timeout periods in the code ;D
 
 ## Usage
 ```
